@@ -1,0 +1,70 @@
+<div id="navbar" class="m-2 p-2 rounded-md backdrop-filter backdrop-blur-md bg-gray-200 dark:bg-gray-800 bg-opacity-80 sticky top-0">
+
+    <nav aria-label="Desktop Navbar" class="space-x-14 items-center lg:flex hidden sticky">
+        <a routerLink="/" class="flex items-center">
+            <img src="../../../vampire-swap-logo.svg" alt="VampireSwap Logo" width="58" height="58" class="mr-2">
+            <span class="font-black text-xl text-red-800 dark:text-white">Vampire Swap</span>
+        </a>
+        <div class="flex flex-1 justify-between items-center">
+            <div class="flex space-x-6 font-bold dark:text-white">
+                <a class="flex items-center hover:text-red-700 dark:hover:text-red-400" routerLink="farms">
+                    <svg data-prefix="fas" data-icon="pumpkin" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="stroke-current fill-current h-4 inline mr-2"><path fill="currentColor" d="M352 113.21v-77.4c0-6.06-3.42-11.6-8.84-14.31l-39.6-19.8c-8.37-4.19-18.54-.32-22.01 8.37L244 103.93C257.27 99.2 271.57 96 288 96c25.16 0 46.23 6.12 64 17.21zm143.3 39.92c-31.61-27.03-78.8-31.69-116.51-15.05 3.07 3.97 6.52 7.38 9.21 11.92 8.32 14.27 14.5 31.78 19.11 51.62-3.69-8.81-7.96-16.87-12.86-24.12-22.67-33-58.08-49.5-106.25-49.5s-83.58 16.5-106.25 49.5c-4.9 7.25-9.17 15.3-12.86 24.11 4.61-19.84 10.78-37.34 19.11-51.61 2.69-4.54 6.13-7.95 9.21-11.92-37.71-16.64-84.9-11.98-116.51 15.05-107.6 92.01-107.6 241.72 0 333.74 38.63 33.03 100.82 33.34 140.12 1.25C238.65 503.51 260.72 512 288 512s49.35-8.49 67.19-23.88c39.3 32.09 101.49 31.78 140.12-1.25 107.59-92.01 107.59-241.73-.01-333.74z" class=""></path></svg>
+                    Pumpkin Patches
+                </a>
+                <a routerLink="pools" class="hover:text-red-700 dark:hover:text-red-400">
+                    <fa-icon [icon]="bloodIcon" class="mr-2"></fa-icon> Blood Pools
+                </a>
+                <a href="#" class="hover:text-red-700 dark:hover:text-red-400">
+                    <fa-icon [icon]="mapIcon" class="mr-2"></fa-icon> Roadmap
+                </a>
+            </div>
+            <div class='flex space-x-6 font-bold'>
+                <span class="p-2 rounded-lg bg-yellow-100 dark:bg-blue-100 font-bold">0x0f54dasd...eefs</span>
+                <button (click)="changeTheme()" class="p-2 text-red-700 dark:text-blue-100">
+                    <fa-icon [icon]="currentThemeIcon" size="lg"></fa-icon>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <nav aria-label="Mobile Navbar" class="flex lg:hidden items-center justify-between sticky">
+        <a href="#" class="flex items-center">
+            <img src="../../../vampire-swap-logo.svg" alt="VampireSwap Logo" width="58" height="58" class="mr-2">
+            <span class="font-black text-xl dark:text-white">Vampire Swap</span>
+        </a>
+        <button (click)="openMobileNavbar()" class="text-xl font-bold px-5 dark:text-white">
+            <fa-icon [icon]="expandIcon"></fa-icon>
+        </button>
+    </nav>
+
+    <div id="offcanvas-menu"
+    class="-ml-2 w-full sm:w-96 top-0 sm:right-0 absolute bg-gray-200 dark:bg-gray-800 rounded-md">
+    <div class="flex flex-col items-center mt-56 flex-1">
+        <button (click)="closeMobileNavbar()" class="text-2xl absolute top-4 right-8 dark:text-white">
+            <fa-icon [icon]="closeIcon"></fa-icon>
+        </button>
+        <span class="mt-1/2 h-20 w-20 bg-yellow-100 dark:bg-blue-100 rounded-full flex items-center p-1">
+            <img src="../../../vampire-swap-logo.svg" alt="VampireSwap Logo">
+        </span>
+        <div class="flex flex-col text-center space-y-4 font-bold mt-6 text-xl dark:text-white w-2/3">
+            <a class="flex items-center justify-center hover:text-red-700 dark:hover:text-red-400" routerLink="/farms">
+                <svg data-prefix="fas" data-icon="pumpkin" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="stroke-current fill-current h-4 inline mr-2"><path fill="currentColor" d="M352 113.21v-77.4c0-6.06-3.42-11.6-8.84-14.31l-39.6-19.8c-8.37-4.19-18.54-.32-22.01 8.37L244 103.93C257.27 99.2 271.57 96 288 96c25.16 0 46.23 6.12 64 17.21zm143.3 39.92c-31.61-27.03-78.8-31.69-116.51-15.05 3.07 3.97 6.52 7.38 9.21 11.92 8.32 14.27 14.5 31.78 19.11 51.62-3.69-8.81-7.96-16.87-12.86-24.12-22.67-33-58.08-49.5-106.25-49.5s-83.58 16.5-106.25 49.5c-4.9 7.25-9.17 15.3-12.86 24.11 4.61-19.84 10.78-37.34 19.11-51.61 2.69-4.54 6.13-7.95 9.21-11.92-37.71-16.64-84.9-11.98-116.51 15.05-107.6 92.01-107.6 241.72 0 333.74 38.63 33.03 100.82 33.34 140.12 1.25C238.65 503.51 260.72 512 288 512s49.35-8.49 67.19-23.88c39.3 32.09 101.49 31.78 140.12-1.25 107.59-92.01 107.59-241.73-.01-333.74z" class=""></path></svg>
+                Pumpkin Patches
+            </a>
+            <a routerLink="/pools" class="hover:text-red-700 dark:hover:text-red-400">
+                <fa-icon [icon]="bloodIcon" class="mr-2"></fa-icon> Blood Pools
+            </a>
+            <a href="#" class="hover:text-red-700 dark:hover:text-red-400">
+                <fa-icon [icon]="mapIcon" class="mr-2"></fa-icon> Roadmap
+            </a>
+        </div>
+        <div class="flex justify-around mt-28 w-full">
+            <span class="p-2 rounded-lg bg-yellow-100 dark:bg-blue-100 font-bold">0x0f54dasd...eefs</span>
+            <button (click)="changeTheme()" class="p-2 text-red-700 dark:text-blue-100">
+                <fa-icon [icon]="currentThemeIcon" size="lg"></fa-icon>
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+

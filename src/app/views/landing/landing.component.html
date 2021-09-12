@@ -1,0 +1,6 @@
+<main-banner></main-banner>
+<stats-banner></stats-banner>
+<div class="flex flex-col lg:flex-wrap lg:flex-row justify-around m-2 p-2 lg:mt-32 mt-16">
+    <feature-banner class="m-2" *ngFor="let feature of features" [imagePath]="feature.imagePath"
+        [featureTitle]="feature.featureTitle" [featureSubtitle]="feature.featureSubtitle"></feature-banner>
+</div>
