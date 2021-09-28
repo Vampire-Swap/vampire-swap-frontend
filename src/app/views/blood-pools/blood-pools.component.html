@@ -1,1 +1,4 @@
-<p>blood-pools works!</p>
+<div class="flex flex-col lg:flex-row lg:space-x-3 space-y-5 lg:space-y-0 lg:justify-around  sm:items-center h-screen m-4">
+    <pool-card class="sm:w-1/2 lg:w-1/3 xl:w-1/4" *ngFor="let poolConfiguration of poolConfigurations; let i = index"
+        [poolConfiguration]="poolConfiguration" [poolId]="i" [imagePath]="poolImages[i]"></pool-card>
+</div>

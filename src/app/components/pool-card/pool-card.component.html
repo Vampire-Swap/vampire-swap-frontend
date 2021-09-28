@@ -1,0 +1,53 @@
+<div class="flex flex-col bg-gray-100 dark:bg-gray-800 rounded-lg pool-container">
+    <div class="flex p-2">
+        <img [src]="imagePath" alt="LP Logo" class="w-20">
+        <div class="flex flex-1 flex-col text-center ml-4 dark:text-white justify-center items-center">
+            <h2 *ngIf="pool.secondTokenFullName" class="font-bold sm:text-lg">{{ pool.firstTokenFullName }} - {{ pool.secondTokenFullName }} Patch</h2>
+            <h2 *ngIf="!pool.secondTokenFullName" class="font-bold sm:text-lg">{{ pool.earnTokenFullName }} Pool</h2>
+            <h3 *ngIf="pool.secondTokenFullName">Stake {{ pool.firstTokenTicker }}/{{ pool.secondTokenTicker }} LP - Earn {{ pool.earnTokenTicker }}</h3>
+            <h3 *ngIf="!pool.secondTokenFullName">Stake {{ pool.firstTokenTicker }} - Earn {{ pool.earnTokenTicker }}</h3>
+        </div>
+    </div>
+
+    <div class="flex p-2 space-x-10 justify-center">
+        <span *ngIf="pool.secondTokenFullName" class="p-1 px-2 font-bold bg-yellow-100 dark:bg-blue-200 rounded-full">{{ pool.multiplier }} X</span>
+        <span class="p-1 px-2 font-bold bg-yellow-100 dark:bg-blue-200 rounded-full">Fee {{ pool.fee }}%</span>
+        <span *ngIf="pool.core" class="p-1 px-2 font-bold bg-yellow-100 dark:bg-blue-200 rounded-full flex items-center" ><svg viewBox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg" class="fill-current mr-1"><path d="M23 12L20.56 9.21L20.9 5.52L17.29 4.7L15.4 1.5L12 2.96L8.6 1.5L6.71 4.69L3.1 5.5L3.44 9.2L1 12L3.44 14.79L3.1 18.49L6.71 19.31L8.6 22.5L12 21.03L15.4 22.49L17.29 19.3L20.9 18.48L20.56 14.79L23 12ZM9.38 16.01L7 13.61C6.61 13.22 6.61 12.59 7 12.2L7.07 12.13C7.46 11.74 8.1 11.74 8.49 12.13L10.1 13.75L15.25 8.59C15.64 8.2 16.28 8.2 16.67 8.59L16.74 8.66C17.13 9.05 17.13 9.68 16.74 10.07L10.82 16.01C10.41 16.4 9.78 16.4 9.38 16.01Z"></path></svg> Core</span>
+    </div>
+
+    <div class="flex flex-col space-y-5 p-6">
+        <div class="flex justify-between w-full dark:text-white">
+            <h3>APR:</h3>
+            <h3 class="font-bold">{{ pool.apr }}%</h3>
+        </div>
+
+        <div class="flex justify-between items-center w-full">
+            <div class="flex flex-col -space-y-0.5 dark:text-white">
+                <h3>VMP earned</h3>
+                <h3 class="font-bold">{{ pool.earned }}</h3>
+            </div>
+            <button class="font-bold p-2 bg-yellow-100 dark:bg-blue-200 rounded-md ring-2 ring-yellow-300 dark:ring-blue-400">Harvest</button>
+        </div>
+
+        <div class="flex justify-between w-full dark:text-white">
+            <h3>You're staking:</h3>
+            <h3 *ngIf="pool.secondTokenFullName" class="font-bold text-center">{{ pool.staked }} {{ pool.firstTokenTicker }}/{{ pool.secondTokenTicker }}</h3>
+            <h3 *ngIf="!pool.secondTokenFullName" class="font-bold text-center">{{ pool.staked }} {{ pool.firstTokenTicker }}</h3>
+        </div>
+
+        <div class="flex justify-center w-full">
+            <button (click)="toggleManageSection()" class="font-bold text-lg p-2 bg-yellow-100 dark:bg-blue-200 rounded-md">Manage</button>
+        </div>
+
+        <div [id]="'manage-'+poolId" class="flex flex-col justify-around w-full manage-section space-y-2">
+            <div class="flex">
+                <input type="number" placeholder="Amount" class="flex-1 dark:bg-gray-800 rounded-md mr-2 dark:text-white border-2 focus:border-gray-500">
+                <button class="font-bold p-2 bg-yellow-100 dark:bg-blue-200 rounded-md">Stake(Max)</button>
+            </div>
+            <div class="flex">
+                <input type="number" placeholder="Amount" class="flex-1 dark:bg-gray-800 rounded-md mr-2 dark:text-white border-2 focus:border-gray-500">
+                <button class="font-bold p-2 bg-yellow-100 dark:bg-blue-200 rounded-md">Unstake(Max)</button>
+            </div>
+        </div>
+    </div>
+</div>

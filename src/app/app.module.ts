@@ -12,6 +12,9 @@ import { FeatureBannerComponent } from './components/feature-banner/feature-bann
 import { FooterSectionComponent } from './components/footer-section/footer-section.component';
 import { PumpkinPatchComponent } from './views/pumpkin-patch/pumpkin-patch.component';
 import { BloodPoolsComponent } from './views/blood-pools/blood-pools.component';
+import { PoolCardComponent } from './components/pool-card/pool-card.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WalletPickerComponent } from './components/wallet-picker/wallet-picker.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +26,15 @@ import { BloodPoolsComponent } from './views/blood-pools/blood-pools.component';
     FeatureBannerComponent,
     FooterSectionComponent,
     PumpkinPatchComponent,
-    BloodPoolsComponent
+    BloodPoolsComponent,
+    PoolCardComponent,
+    WalletPickerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
